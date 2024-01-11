@@ -150,6 +150,7 @@ The root folder (with this readme) contains these scripts which can be loaded in
 			- https://regorxxx.github.io/foobar2000-SMP.github.io/scripts/autobackup-smp/
 			- https://regorxxx.github.io/foobar2000-SMP.github.io/scripts/listenbrainz-smp/
 			- https://regorxxx.github.io/foobar2000-SMP.github.io/scripts/lastfm-smp/
+			- https://regorxxx.github.io/foobar2000-SMP.github.io/scripts/fingerprint-tools-smp/
 		- Toolbar with fully configurable buttons using menus.
 		- May use any of the buttons \ tools listed below. Missing buttons are skipped.
 		- Every button and tool has a readme which will be shown when you add them.
