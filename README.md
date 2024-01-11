@@ -9,8 +9,8 @@
 
 ## Features
 
-* **[ChromaPrint](https://acoustid.org/chromaprint) support:** tagging (provided 'fpcalc') and full processing without binaries.
-* **[fooID](https://hydrogenaud.io/index.php/topic,65185.0.html) support:** tagging (provided by the original plugin) and full processing without binaries.
+* **[ChromaPrint](https://acoustid.org/chromaprint) support:** tagging (with fpcalc) and full processing without binaries.
+* **[fooID](https://hydrogenaud.io/index.php/topic,65185.0.html) support:** tagging (with original plugin) and full processing without binaries.
 * **Tagging:** tag your files with any of the supported fingerprint methods.
 * **Read from files:** fingerprints may be read from library (provided by foobar2000 cached tags values) or directly from files (using ffprobe) to minimiz RAM usage.
 * **Searching on library:** find similar tracks by fingerprint on your library.
