@@ -1,5 +1,5 @@
 ﻿'use strict';
-//09/01/24
+//29/02/24
 
 /* exported createFpMenuLeft */
 
@@ -33,10 +33,19 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 	const ppt = getPropertiesPairs(this.buttonsProperties, this.prefix, 0);
 	// limits
 	const maxSel = Number(ppt.iMaxSelection[1]); // Don't search when selecting more than these items
+	// Args
+	const fromHandleList = this.selItems;
+	const playlistName = ppt.playlistName[1];
+	const chromaTag = ppt.fpTagC[1];
+	const fooidTag = ppt.fpTagF[1];
+	const databaseHash = ppt.databaseHash[1];
+	const databasePath = folders.data + 'fpChromaprintReverseMap.json';
+	const databasePathSplit = databasePath.replace('.json', '0.json');
+	const databaseIdxPath = folders.data + 'fpChromaprintReverseMapIdx.json';
 	// Flags
 	const bFlagsSel = this.selItems !== null && this.selItems.Count >= 1;
 	const bFlagsMaxSel = bFlagsSel && this.selItems.Count <= maxSel;
-	const bFlagsDb = _isFile(folders.data + 'fpChromaprintReverseMap.json');
+	const bFlagsDb = _isFile(databasePath) || _isFile(databasePathSplit);
 	const bFlagsFooid = utils.CheckComponent('foo_biometric', true);
 	const bChromaprint = ppt.bChromaprint[1];
 	const bFooId = ppt.bFooId[1];
@@ -46,14 +55,6 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 	const flagsMulSel = bFlagsSel && this.selItems.Count >= 2 ? MF_STRING : MF_GRAYED;
 	const flagsDb = bFlagsDb ? MF_STRING : MF_GRAYED;
 	const flagsFooid = bFlagsFooid ? MF_STRING : MF_GRAYED;
-	// Args
-	const fromHandleList = this.selItems;
-	const playlistName = ppt.playlistName[1];
-	const chromaTag = ppt.fpTagC[1];
-	const fooidTag = ppt.fpTagF[1];
-	const databaseHash = ppt.databaseHash[1];
-	const databasePath = folders.data + 'fpChromaprintReverseMap.json';
-	const databaseIdxPath = folders.data + 'fpChromaprintReverseMapIdx.json';
 	// Menus
 	if (bChromaprint) {	// Execute comparison Chromaprint
 		menu.newEntry({
@@ -95,7 +96,16 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 		menu.newEntry({
 			entryText: 'Search by similar ChromaPrint' + (ppt.bReadFiles[1] ? '' : ' (fast)') + (!bFlagsDb ? '\t(no database)' : (!bFlagsSel ? '\t(no selection)' : !bFlagsMaxSel ? '\t(selection > ' + maxSel + ')' : '')), func: () => {
 				this.switchAnimation('ChromaPrint search...', true);
-				const bDone = chromaPrintUtils.compareFingerprintsFilter({ fromHandleList, toHandleList: fb.GetLibraryItems(), tagName: chromaTag, threshold: ppt.thresholdC[1], playlistName, bReadFiles: ppt.bReadFiles[1] });
+				const bDone = chromaPrintUtils.compareFingerprintsFilter({
+					fromHandleList,
+					toHandleList: fb.GetLibraryItems(),
+					tagName: chromaTag,
+					threshold: ppt.thresholdC[1],
+					playlistName,
+					bReadFiles: ppt.bReadFiles[1],
+					reverseDbPath: databasePath,
+					reverseDbIdxPath: databaseIdxPath
+				});
 				this.selItems = null;
 				this.switchAnimation('ChromaPrint search...', false);
 				return bDone;
@@ -171,7 +181,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 						for (let file of files) { _deleteFile(file); }
 					}
 					let reverseMap, libraryMap;
-					if (_isFile(databaseIdxPath) && _isFile(databasePath)) {
+					if (_isFile(databaseIdxPath) && (_isFile(databasePath) || _isFile(databasePathSplit))) {
 						const toAddHandleList = new FbMetadbHandleList();
 						const toDeleteIdx = new Set();
 						let idxCount = 0;
@@ -218,8 +228,8 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 								if (toDeleteIdx.size) {
 									console.log('ChromaPrint fingerprint database deleting idx: ' + [...toDeleteIdx].join(', '));
 									oldData.forEach((value, key) => {
-										const arrIdx = value.filter((idx) => !toDeleteIdx.has(idx));
-										oldData.set(key, arrIdx);
+										const arrIdx = [...value].filter((idx) => !toDeleteIdx.has(idx));
+										oldData.set(key, new Set(arrIdx));
 									});
 								}
 								reverseMap = chromaPrintUtils.bFastMap ? Object.entries(oldData) : oldData.entries();
@@ -236,9 +246,9 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 						// Calculate in Mb, leave some margin before reaching 110 Mb, since size is an estimation
 						// File size is usually 1.35 smaller than JS ram usage
 						const fileSize = round(roughSizeOfObject(reverseMap) / 1024 ** 2 / 1.35, 1);
-						if (fileSize > 100) {
+						if (fileSize > 20) {
 							const dataLen = reverseMap.length;
-							const newLen = round(dataLen / fileSize * 100, 0);
+							const newLen = round(dataLen / fileSize * 20, 0);
 							_saveSplitJson(databasePath, reverseMap, SetReplacer, void (0), newLen);
 						} else {
 							_save(databasePath, JSON.stringify(reverseMap, SetReplacer));
@@ -355,7 +365,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 	if (databaseHash !== -1) {
 		let bRecreate = popup.no;
 		// Missing database?
-		if (!_isFile(databasePath)) {
+		if (!_isFile(databasePath) && ! _isFile(databasePathSplit)) {
 			ppt.databaseHash[1] = -1;
 			overwriteProperties(ppt);
 			bRecreate = WshShell.Popup('ChromaPrint database file is missing.\nRecreate it?', 0, 'Fingerprint Tools', popup.question + popup.yes_no);

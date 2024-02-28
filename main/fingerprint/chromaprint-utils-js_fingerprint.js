@@ -1,5 +1,5 @@
 ﻿'use strict';
-//10/01/24
+//29/02/24
 
 include('..\\..\\helpers\\helpers_xxx.js');
 /* global folders:readable, globTags:readable,  */
@@ -183,7 +183,7 @@ chromaPrintUtils.compareFingerprintsFilter = async function compareFingerprints(
 	).map((array) => { return array.map((item) => { return item.split(','); }).flat(1).map((item) => { return item ? Number(item) : void (0); }).filter(Boolean); });
 	// Get reverse map of tags
 	let data = null;
-	if (_isFile(reverseDbPath)) {
+	if (_isFile(reverseDbPath) || _isFile(reverseDbPath.replace('.json', '0.json'))) {
 		data = _jsonParseFileSplit(reverseDbPath, 'Fingerprint inverse database', 'ChromaPrint search', utf8);
 		if (!data || !data.length) { console.popup('Database corrupt: ' + reverseDbPath, 'Fingerprint Tag'); return; }
 	} else { console.popup('Database not found: ' + reverseDbPath, 'Fingerprint Tag'); return; }
