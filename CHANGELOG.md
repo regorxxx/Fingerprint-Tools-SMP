@@ -2,7 +2,7 @@
 
 ## [Table of Contents]
 - [Unreleased](#unreleased)
-- [1.0.0](#100---2024-01-11)
+- [1.0.0](#100---2024-02-29)
 
 ## [Unreleased][]
 ### Added
@@ -10,7 +10,7 @@
 ### Removed
 ### Fixed
 
-## [1.0.0] - 2021-09-10
+## [1.0.0] - 2021-02-29
 ### Added
 - First release.
 ### Changed
