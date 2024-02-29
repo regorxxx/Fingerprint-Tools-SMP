@@ -15,7 +15,7 @@
 * **Read from files:** fingerprints may be read from library (provided by foobar2000 cached tags values) or directly from files (using ffprobe) to minimiz RAM usage.
 * **Searching on library:** find similar tracks by fingerprint on your library.
 * **Fingerprint comparison:** report the similarity between the selected tracks.
-* **Fast processing:** fingerprint processing is entirely done withint he script files, without other dependencies, and heavily optimized to be as fast as possible.
+* **Fast processing:** fingerprint processing is entirely done within the script files, without other dependencies, and heavily optimized to be as fast as possible.
 * **Toolbar:** the button can be loaded within a toolbar or as an independent button. It's fully compatible with my other scripts which also use a toolbar (see at bottom), so the button can be simply merged with your already existing toolbar panel easily.
 
 ### Compatible with (toolbar)
