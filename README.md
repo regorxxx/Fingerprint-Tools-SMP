@@ -5,7 +5,7 @@
 ![GitHub](https://img.shields.io/github/license/regorxxx/Fingerprint-Tools-SMP)  
 [Spider Monkey Panel](https://theqwertiest.github.io/foo_spider_monkey_panel) Script for [foobar2000](https://www.foobar2000.org), built within a button. [ChromaPrint](https://acoustid.org/chromaprint) and [fooID](https://hydrogenaud.io/index.php/topic,65185.0.html) tools to compare fingerprints, search on library or tagging.
 
-![Auto-device](https://user-images.githubusercontent.com/83307074/125860905-3127eee3-5618-4487-a181-b8defbd6031f.gif)
+![fp_1](https://github.com/regorxxx/Fingerprint-Tools-SMP/assets/83307074/9c89735e-947b-468f-9b1d-a68093a051e9)
 
 ## Features
 
@@ -26,7 +26,7 @@
  5. [Device-Priority-SMP](https://github.com/regorxxx/Device-Priority-SMP): Automatic output device selection.
  6. [Wrapped-SMP](https://github.com/regorxxx/Wrapped-SMP): Outputs a report similar to Spotify's wrapped and personalized playlists.
 
-![Auto-device2](https://user-images.githubusercontent.com/83307074/125861102-9253716b-ded6-41d5-83b5-84664edeb17f.gif)
+![fp_2](https://github.com/regorxxx/Fingerprint-Tools-SMP/assets/83307074/5403ac83-50b5-459a-9d96-c568e9f42c26)
 
 ## Installation
 See [_TIPS and INSTALLATION (txt)](https://github.com/regorxxx/Fingerprint-Tools-SMP/blob/main/_TIPS%20and%20INSTALLATION.txt) and the [Wiki](https://github.com/regorxxx/Fingerprint-Tools-SMP/wiki/Installation).
