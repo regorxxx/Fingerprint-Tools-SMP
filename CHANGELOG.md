@@ -14,6 +14,7 @@
 - Helpers: updated helpers.
 ### Removed
 ### Fixed
+- Configuration: .json files at 'foobar2000\js_data\presets\global' not being saved with the calculated properties based on user values from other files.
 
 ## [1.1.0] - 2021-03-21
 ### Added
