@@ -2,6 +2,7 @@
 
 ## [Table of Contents]
 - [Unreleased](#unreleased)
+- [1.3.0](#130---2024-07-30)
 - [1.2.0](#120---2024-07-24)
 - [1.1.0](#110---2024-03-21)
 - [1.0.0](#100---2024-02-29)
@@ -9,6 +10,13 @@
 ## [Unreleased][]
 ### Added
 ### Changed
+### Removed
+### Fixed
+
+## [1.3.0] - 2024-04-30
+### Added
+### Changed
+- Helpers: updated helpers.
 ### Removed
 ### Fixed
 
@@ -39,7 +47,8 @@
 ### Removed
 ### Fixed
 
-[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/2b58c28...v1.0.0
