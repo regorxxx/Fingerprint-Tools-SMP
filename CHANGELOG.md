@@ -2,6 +2,7 @@
 
 ## [Table of Contents]
 - [Unreleased](#unreleased)
+- [1.3.0](#131---2024-08-13)
 - [1.3.0](#130---2024-07-30)
 - [1.2.0](#120---2024-07-24)
 - [1.1.0](#110---2024-03-21)
@@ -10,18 +11,24 @@
 ## [Unreleased][]
 ### Added
 ### Changed
-- Helpers: updated helpers.
 ### Removed
 ### Fixed
 
-## [1.3.0] - 2024-04-30
+## [1.3.1] - 2024-08-13
 ### Added
 ### Changed
 - Helpers: updated helpers.
 ### Removed
 ### Fixed
 
-## [1.2.0] - 2024-04-27
+## [1.3.0] - 2024-07-30
+### Added
+### Changed
+- Helpers: updated helpers.
+### Removed
+### Fixed
+
+## [1.2.0] - 2024-07-24
 ### Added
 - Readmes: added readme for global settings found at 'foobar2000\js_data\presets\global' .json files.
 - Configuration: expanded user configurable file at '[FOOBAR PROFILE FOLDER]\js_data\presets\global\globSettings.json' with a new setting for console logging to file. Disabled by default. Now this is a change from the previous behavior, where console was always logged to 'console.log' file at the [FOOBAR PROFILE FOLDER]. It can now be switched, but since it's probably not useful for most users is disabled by default.
@@ -48,7 +55,8 @@
 ### Removed
 ### Fixed
 
-[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.1...HEAD
+[1.3.1]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.0.0...v1.1.0
