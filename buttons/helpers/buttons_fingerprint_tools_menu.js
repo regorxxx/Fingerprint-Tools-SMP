@@ -1,5 +1,5 @@
 ﻿'use strict';
-//29/02/24
+//09/08/24
 
 /* exported createFpMenuLeft */
 
@@ -221,7 +221,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 									console.log('ChromaPrint fingerprint database adding: ' + toAddHandleList.Count + ' new items.');
 									reverseMap = await chromaPrintUtils.reverseIndexingIter({ toHandleList: toAddHandleList, bReadFiles: ppt.bReadFiles[1] });
 									reverseMap.forEach((value, key) => {
-										value = new Set([...value].map((idx) => idx + idxCount)); // idx must be remapped to new positions
+										value = new Set(Array.from(value, (idx) => idx + idxCount)); // idx must be remapped to new positions
 										oldData.set(key, (new Set(oldData.get(key) || [])).union(value));
 									});
 								}
