@@ -2,13 +2,20 @@
 
 ## [Table of Contents]
 - [Unreleased](#unreleased)
-- [1.3.0](#131---2024-08-13)
+- [1.4.0](#140---2024-10-09)
+- [1.3.1](#131---2024-08-13)
 - [1.3.0](#130---2024-07-30)
 - [1.2.0](#120---2024-07-24)
 - [1.1.0](#110---2024-03-21)
 - [1.0.0](#100---2024-02-29)
 
 ## [Unreleased][]
+### Added
+### Changed
+### Removed
+### Fixed
+
+## [1.4.0] - 2024-10-09
 ### Added
 ### Changed
 - [JSplitter (SMP)](https://foobar2000.ru/forum/viewtopic.php?t=6378&start=360) support and ES2021 compatibility.
@@ -58,7 +65,8 @@
 ### Removed
 ### Fixed
 
-[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.1...HEAD
+[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.1.0...v1.2.0
