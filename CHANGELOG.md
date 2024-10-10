@@ -11,6 +11,7 @@
 
 ## [Unreleased][]
 ### Added
+- UI: toolbar tooltip now shows 'Shift + Win + R. Click' shortcut to open SMP/JSpliter panel menu (which works globally on any script and panel, at any position).
 ### Changed
 ### Removed
 ### Fixed
