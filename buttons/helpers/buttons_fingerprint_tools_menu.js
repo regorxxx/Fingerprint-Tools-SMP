@@ -1,5 +1,5 @@
 ﻿'use strict';
-//09/08/24
+//15/11/24
 
 /* exported createFpMenuLeft */
 
@@ -78,7 +78,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			}, flags: flagsChroma | flagsMaxSel | flagsMulSel, data: { bDynamicMenu: true }
 		});
 	}
-	menu.newEntry({ entryText: 'sep' });
+	menu.newSeparator();
 	if (bChromaprint) {
 		// Execute comparison ChromaPrint
 		if (!ppt.bReadFiles[1]) {
@@ -123,7 +123,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			}, flags: flagsMaxSel, data: { bDynamicMenu: true }
 		});
 	}
-	menu.newEntry({ entryText: 'sep' });
+	menu.newSeparator();
 	{
 		const menuName = menu.newMenu('Tagging...');
 		{	// Tag ChromaPrint
@@ -159,7 +159,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 				}, flags: flagsSel | flagsFooid, data: { bDynamicMenu: true }
 			});
 		}
-		menu.newEntry({ menuName, entryText: 'sep' });
+		menu.newSeparator(menuName);
 		{	// ChromaPrint database
 			menu.newEntry({
 				menuName, entryText: (databaseHash !== -1 ? '(Re)c' : 'C') + 'reate ChromaPrint database...', func: async (bOmmit = false) => {
@@ -262,7 +262,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			});
 		}
 	}
-	menu.newEntry({ entryText: 'sep' });
+	menu.newSeparator();
 	{
 		const config = menu.newMenu('Configuration...');
 		{
@@ -290,7 +290,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 				}, flags: flagsChroma
 			});
 			menu.newCheckMenu(menuName, 'Read directly from files', void (0), () => ppt.bReadFiles[1]);
-			menu.newEntry({ menuName, entryText: 'sep' });
+			menu.newSeparator(menuName);
 			// Scoring
 			menu.newEntry({
 				menuName, entryText: 'Score threshold' + '\t' + _b(ppt.thresholdC[1]), func: () => {
@@ -311,7 +311,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 				}
 			});
 			menu.newCheckMenu(menuName, 'Enable FooId tools', void (0), () => ppt.bFooId[1]);
-			menu.newEntry({ menuName, entryText: 'sep' });
+			menu.newSeparator(menuName);
 			// Scoring
 			menu.newEntry({
 				menuName, entryText: 'Score threshold' + '\t' + _b(ppt.thresholdF[1]), func: () => {
@@ -322,7 +322,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 				}, flags: flagsFooid
 			});
 		}
-		menu.newEntry({ menuName: config, entryText: 'sep' });
+		menu.newSeparator(config);
 		{	// Config max Selection
 			menu.newEntry({
 				menuName: config, entryText: 'Max selection allowed' + '\t' + _b(maxSel), func: () => {
@@ -333,7 +333,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 				}
 			});
 		}
-		menu.newEntry({ menuName: config, entryText: 'sep' });
+		menu.newSeparator(config);
 		{
 			menu.newEntry({
 				menuName: config, entryText: 'Create SMP dynamic menus', func: () => {
@@ -350,7 +350,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 				}
 			});
 			menu.newCheckMenu(config, 'Create SMP dynamic menus', void (0), () => { return ppt.bDynamicMenus[1]; });
-			menu.newEntry({ menuName: config, entryText: 'sep' });
+			menu.newSeparator(config);
 			{	// Readme
 				menu.newEntry({
 					menuName: config, entryText: 'Readme...', func: () => {
