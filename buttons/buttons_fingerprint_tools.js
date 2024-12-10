@@ -1,5 +1,5 @@
 ﻿'use strict';
-//09/10/24
+//09/12/24
 
 /*
 	Fingerprint tag (Chromaprint)
@@ -37,12 +37,12 @@ var newButtonsProperties = { // NOSONAR[global]
 	thresholdF: ['FooID minimum score', 85, { greater: 0, lowerEq: 100, func: isInt }, 85],
 	playlistName: ['Playlist name', 'Search...', { func: isString }, 'Search...'],
 	databaseHash: ['Chromaprint database hash', -1],
-	bChromaprint: ['Enable Chromaprint tools?', true, { func: isBoolean }, true],
-	bFooId: ['Enable FooId tools?', true, { func: isBoolean }, true],
-	bReadFiles: ['Read directly from files?', false, { func: isBoolean }, false],
+	bChromaprint: ['Enable Chromaprint tools', true, { func: isBoolean }, true],
+	bFooId: ['Enable FooId tools', true, { func: isBoolean }, true],
+	bReadFiles: ['Read directly from files', false, { func: isBoolean }, false],
 	iMaxSelection: ['Allow only X items', 30, { func: isInt }, 30],
-	bDynamicMenus: ['Expose menus at  \'File\\Spider Monkey Panel\\Script commands\'', false, { func: isBoolean }, false],
-	bIconMode: ['Icon-only mode?', false, { func: isBoolean }, false]
+	bDynamicMenus: ['Menus at  \'File\\Spider Monkey Panel\\...\'', false, { func: isBoolean }, false],
+	bIconMode: ['Icon-only mode', false, { func: isBoolean }, false]
 };
 setProperties(newButtonsProperties, prefix, 0); //This sets all the panel properties at once
 {
