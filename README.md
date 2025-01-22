@@ -3,7 +3,7 @@
 [![CodeFactor][codefactor_badge]](https://www.codefactor.io/repository/github/regorxxx/Fingerprint-Tools-SMP/overview/main)
 [![CodacyBadge][codacy_badge]](https://www.codacy.com/gh/regorxxx/Fingerprint-Tools-SMP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=regorxxx/Fingerprint-Tools-SMP&amp;utm_campaign=Badge_Grade)
 ![GitHub](https://img.shields.io/github/license/regorxxx/Fingerprint-Tools-SMP)  
-[Spider Monkey Panel](https://theqwertiest.github.io/foo_spider_monkey_panel) Script for [foobar2000](https://www.foobar2000.org), built within a button. [ChromaPrint](https://acoustid.org/chromaprint) and [fooID](https://hydrogenaud.io/index.php/topic,65185.0.html) tools to compare fingerprints, search on library or tagging. **Carefully read the readme within foobar2000 to understand usage and limitations on 32 bit foobar2000 builds.**
+[Spider Monkey Panel](https://theqwertiest.github.io/foo_spider_monkey_panel)/[JSplitter](https://foobar2000.ru/forum/viewtopic.php?t=6378) Script for [foobar2000](https://www.foobar2000.org), built within a button. [ChromaPrint](https://acoustid.org/chromaprint) and [fooID](https://hydrogenaud.io/index.php/topic,65185.0.html) tools to compare fingerprints, search on library or tagging. **Carefully read the readme within foobar2000 to understand usage and limitations on 32 bit foobar2000 builds.**
 
 ![fp_1](https://github.com/regorxxx/Fingerprint-Tools-SMP/assets/83307074/9c89735e-947b-468f-9b1d-a68093a051e9)
 
@@ -28,9 +28,24 @@
 
 ![fp_2](https://github.com/regorxxx/Fingerprint-Tools-SMP/assets/83307074/5403ac83-50b5-459a-9d96-c568e9f42c26)
 
+## Requirements
+ 1. [Spider Monkey Panel](https://theqwertiest.github.io/foo_spider_monkey_panel): Component required to install this javaScript addon. Only x32.
+ 2. [JSplitter](https://foobar2000.ru/forum/viewtopic.php?t=6378): Component required to install this javaScript addon. Both x32 and x64.
+ 3. FontAwesome: found at ’.\ resources\fontawesome-webfont.ttf’. See installation notes.
+ 4. ChromaPrint: 
+ 5. FooID: found at ’.\ resources\FooID\’ folder. See 'install.txt' there.
+
 ## Installation
-See [_TIPS and INSTALLATION (txt)](https://github.com/regorxxx/Fingerprint-Tools-SMP/blob/main/_TIPS%20and%20INSTALLATION.txt) and the [Wiki](https://github.com/regorxxx/Fingerprint-Tools-SMP/wiki/Installation).
+See [_INSTALLATION (txt)](https://github.com/regorxxx/Fingerprint-Tools-SMP/blob/main/_INSTALLATION.txt) and the [Wiki](https://github.com/regorxxx/Fingerprint-Tools-SMP/wiki/Installation).
 Not properly following the installation instructions will result in scripts not working as intended. Please don't report errors before checking this.
+
+## Support
+ 1. [Issues tracker](https://github.com/regorxxx/Fingerprint-Tools-SMP/issues).
+ 2. [Hydrogenaudio forum](https://hydrogenaud.io/index.php/topic,125566.0.html).
+ 3. [Wiki](https://github.com/regorxxx/Fingerprint-Tools-SMP/wiki).
+
+## Nightly releases
+Zip file [from GitHub](https://github.com/regorxxx/Fingerprint-Tools-SMP/archive/refs/heads/main.zip) (using the latest commit).
 
 [changelog]: CHANGELOG.md
 [version_badge]: https://img.shields.io/github/release/regorxxx/Fingerprint-Tools-SMP.svg
