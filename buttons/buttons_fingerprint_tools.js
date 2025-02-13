@@ -1,5 +1,5 @@
 ﻿'use strict';
-//09/12/24
+//13/02/25
 
 /*
 	Fingerprint tag (Chromaprint)
@@ -45,33 +45,41 @@ var newButtonsProperties = { // NOSONAR[global]
 	bIconMode: ['Icon-only mode', false, { func: isBoolean }, false]
 };
 setProperties(newButtonsProperties, prefix, 0); //This sets all the panel properties at once
-{
-	const ppt = getPropertiesPairs(newButtonsProperties, prefix, 0);
-	buttonsBar.list.push(ppt);
-	// Create dynamic menus
-	if (ppt.bDynamicMenus[1]) {
-		bindDynamicMenus({
-			menu: createFpMenuLeft.bind({ buttonsProperties: ppt, prefix: '' }),
-			parentName: 'Fingerprint Tools',
-		});
-	}
-}
+newButtonsProperties = getPropertiesPairs(newButtonsProperties, prefix, 0);
+buttonsBar.list.push(newButtonsProperties);
 
 addButton({
-	'Fingerprint Tools': new ThemedButton({ x: 0, y: 0, w: _gr.CalcTextWidth('Fingerprint Tools', _gdiFont(globFonts.button.name, globFonts.button.size * buttonsBar.config.scale)) + 25 * _scale(1, false) / _scale(buttonsBar.config.scale), h: 22 }, 'Fingerprint Tools', function (mask) {
-		let bDone;
-		if (mask === MK_SHIFT) { // Enable/disable menus
-			// menuAlt.btn_up(this.currX, this.currY + this.currH);
-		} else if (mask === MK_CONTROL) { // Simulate menus to get names
-			// menu.btn_up(this.currX, this.currY + this.currH, void(0), void(0), false, _setClipboardData);
-		} else { // Standard use
-			bDone = createFpMenuLeft.bind(this)().btn_up(this.currX, this.currY + this.currH);
-		}
-		return bDone;
-	}, null, void (0), (parent) => {
-		parent.selItems = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
-		let info = 'Fingerprinting tools:';
-		info += '\nTracks:\t' + parent.selItems.Count + ' item(s)';
-		return info;
-	}, prefix, newButtonsProperties, chars.wrench, void (0), void (0), void (0), void (0), { scriptName: 'Fingerprint-Tools-SMP', version }),
+	'Fingerprint Tools': new ThemedButton({
+		coordinates: { x: 0, y: 0, w: _gr.CalcTextWidth('Fingerprint Tools', _gdiFont(globFonts.button.name, globFonts.button.size * buttonsBar.config.scale)) + 25 * _scale(1, false) / _scale(buttonsBar.config.scale), h: 22 },
+		text: 'Fingerprint Tools',
+		func: function (mask) {
+			let bDone;
+			if (mask === MK_SHIFT) { // Enable/disable menus
+				// menuAlt.btn_up(this.currX, this.currY + this.currH);
+			} else if (mask === MK_CONTROL) { // Simulate menus to get names
+				// menu.btn_up(this.currX, this.currY + this.currH, void(0), void(0), false, _setClipboardData);
+			} else { // Standard use
+				bDone = createFpMenuLeft.bind(this)().btn_up(this.currX, this.currY + this.currH);
+			}
+			return bDone;
+		},
+		description: function () {
+			this.selItems = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
+			let info = 'Fingerprinting tools:';
+			info += '\nTracks:\t' + this.selItems.Count + ' item(s)';
+			return info;
+		},
+		prefix, buttonsProperties: newButtonsProperties,
+		icon: chars.wrench,
+		onInit: function () {
+			// Create dynamic menus
+			if (this.buttonsProperties.bDynamicMenus[1]) {
+				bindDynamicMenus({
+					menu: createFpMenuLeft.bind({ buttonsProperties: this.buttonsProperties, prefix: '' }),
+					parentName: 'Fingerprint Tools',
+				});
+			}
+		},
+		update: { scriptName: 'Fingerprint-Tools-SMP', version }
+	}),
 });
