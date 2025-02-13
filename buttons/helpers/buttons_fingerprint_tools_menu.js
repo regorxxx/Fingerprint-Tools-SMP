@@ -1,5 +1,5 @@
 ﻿'use strict';
-//15/11/24
+//13/02/25
 
 /* exported createFpMenuLeft */
 
@@ -23,7 +23,10 @@ include('..\\..\\main\\main_menu\\main_menu_custom.js');
 /* global bindDynamicMenus:readable, deleteMainMenuDynamic:readable,  */
 
 function createFpMenuLeft({ bSimulate = false } = {}) {
-	if (bSimulate) { return createFpMenuLeft.bind({ selItems: { Count: 2 }, buttonsProperties: this.buttonsProperties, prefix: this.prefix })(false); }
+	if (bSimulate) {
+		this.selItems = { Count: 2 };
+		return createFpMenuLeft.bind(this)(false);
+	}
 	const menu = new _menu();
 	// Safe Check
 	if (!this.selItems || !this.selItems.Count) {

@@ -18,6 +18,7 @@
 - Helpers: general code cleanup on menus internal code. Please report any bug on extra separators or menu entries not working as expected.
 ### Removed
 ### Fixed
+- SMP Dynamic menu: fixed multiple errors on dynamic menus (un)registering.
 - UI: '&' being displayed as '_' on tooltips.
 
 ## [1.4.0] - 2024-10-09
