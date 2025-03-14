@@ -1,5 +1,5 @@
 ﻿'use strict';
-//13/02/25
+//12/03/25
 
 /*
 	Fingerprint tag (Chromaprint)
@@ -27,7 +27,7 @@ include('helpers\\buttons_fingerprint_tools_menu.js');
 var prefix = 'fp_0'; // NOSONAR[global]
 var version = '1.4.0'; // NOSONAR[global]
 
-try { window.DefineScript('Fingerprint Tools', { author: 'regorxxx', version, features: { drag_n_drop: false } }); } catch (e) { /* May be loaded along other buttons */ }
+try { window.DefineScript('Fingerprint Tools', { author: 'regorxxx', version, features: { drag_n_drop: false } }); } catch (e) { /* May be loaded along other buttons */ } // eslint-disable-line no-unused-vars
 
 var newButtonsProperties = { // NOSONAR[global]
 	fpTagC: ['Chromaprint Fingerprint tag', globTags.acoustidFP, { func: isString }, globTags.acoustidFP],
