@@ -1,5 +1,5 @@
 ﻿'use strict';
-//13/02/25
+//17/03/25
 
 /* exported createFpMenuLeft */
 
@@ -10,7 +10,7 @@ include('..\\..\\helpers\\helpers_xxx_file.js');
 include('..\\..\\helpers\\helpers_xxx_prototypes.js');
 /* global round:readable, roughSizeOfObject:readable, SetReplacer:readable, _b:readable, _p:readable */
 include('..\\..\\helpers\\helpers_xxx_properties.js');
-/* global getPropertiesPairs:readable, overwriteProperties:readable */
+/* global overwriteProperties:readable */
 include('..\\..\\helpers\\menu_xxx.js');
 /* global _menu:readable */
 include('..\\..\\helpers\\helpers_xxx_input.js');
@@ -33,7 +33,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 		this.selItems = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
 		if (!this.selItems || !this.selItems.Count) { this.selItems = null; console.log('Fingerprint Tools: No selected items.'); }
 	}
-	const ppt = getPropertiesPairs(this.buttonsProperties, this.prefix, 0);
+	const ppt = this.buttonsProperties;
 	// limits
 	const maxSel = Number(ppt.iMaxSelection[1]); // Don't search when selecting more than these items
 	// Args
