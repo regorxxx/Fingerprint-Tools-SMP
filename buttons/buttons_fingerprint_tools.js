@@ -1,5 +1,5 @@
 ﻿'use strict';
-//17/03/25
+//13/05/25
 
 /*
 	Fingerprint tag (Chromaprint)
@@ -25,7 +25,7 @@ include('..\\main\\fingerprint\\fooid-utils-js_fingerprint.js');
 include('helpers\\buttons_fingerprint_tools_menu.js');
 /* global createFpMenuLeft:readable */
 var prefix = 'fp'; // NOSONAR[global]
-var version = '1.4.0'; // NOSONAR[global]
+var version = '1.5.0'; // NOSONAR[global]
 
 try { window.DefineScript('Fingerprint Tools', { author: 'regorxxx', version, features: { drag_n_drop: false } }); } catch (e) { /* May be loaded along other buttons */ } // eslint-disable-line no-unused-vars
 
