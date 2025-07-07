@@ -1,5 +1,5 @@
 ﻿'use strict';
-//29/02/24
+//05/07/25
 
 include('..\\..\\helpers\\helpers_xxx.js');
 /* global folders:readable, globTags:readable,  */
@@ -179,7 +179,7 @@ chromaPrintUtils.compareFingerprintsFilter = async function compareFingerprints(
 	// Get Tags
 	const fromTags = (bReadFiles
 		? await ffprobeUtils.getTags(fromHandleList, tagName).then((tags) => { return tags.map((obj) => [obj[tagName]]); })
-		: getHandleListTagsV2(fromHandleList, [tagName], {bMerged: true, splitBy: null})
+		: getHandleListTagsV2(fromHandleList, [tagName], { bMerged: true, splitBy: null })
 	).map((array) => { return array.map((item) => { return item.split(','); }).flat(1).map((item) => { return item ? Number(item) : void (0); }).filter(Boolean); });
 	// Get reverse map of tags
 	let data = null;
@@ -214,7 +214,7 @@ chromaPrintUtils.compareFingerprintsFilter = async function compareFingerprints(
 				if (typeof idx === 'undefined') { console.popup('Database corrupt: ' + reverseDbPath + '\n\nUnknown track found: ' + _p(match.idx) + ' ' + oldIdx, 'Fingerprint Tag'); return; }
 				const toTag = (bReadFiles
 					? await ffprobeUtils.getTags(new FbMetadbHandleList(toHandleList[idx]), tagName).then((tags) => { return tags.map((obj) => [obj[tagName]]); })
-					: getHandleListTagsV2(new FbMetadbHandleList(toHandleList[idx]), [tagName], {bMerged: true, splitBy: null})
+					: getHandleListTagsV2(new FbMetadbHandleList(toHandleList[idx]), [tagName], { bMerged: true, splitBy: null })
 				)[0].map((item) => { return item.split(','); }).flat(1).map((item) => { return item ? Number(item) : void (0); }).filter(Boolean);
 				let toTagLen = toTag ? toTag.length : null;
 				if (toTagLen) {
@@ -284,7 +284,8 @@ chromaPrintUtils.calculateFingerprints = function calculateFingerprints({
 	bMerge = true,
 	fpcalcPath = folders.xxx + 'helpers-external\\fpcalc\\fpcalc.exe',
 	bDebug = false,
-	bProfile = true
+	bProfile = true,
+	bQuiet = false
 }) {
 	// Safecheck
 	if (!fromHandleList || !fromHandleList.Count) { return false; }
@@ -334,7 +335,7 @@ chromaPrintUtils.calculateFingerprints = function calculateFingerprints({
 		calcFp(count);
 	}
 	const failedItemsLen = failedItems.length;
-	console.popup(totalTracks + ' items processed.\n' + totalItems + ' items tagged.\n' + failedItemsLen + ' items failed.' + (failedItemsLen ? '\n\nFailed items may be re-scanned in case the files were blocked. For more info, see this:\n https://github.com/regorxxx/Playlist-Tools-SMP/wiki/Known-problems-or-limitations#fingerprint-chromaprint-or-fooid-and-ebur-128-ffmpeg-tagging--fails-with-some-tracks' + '\n\nList of failed items:\n' + failedItems.join('\n') : ''), 'Fingerprint Tag');
+	(bQuiet ? console.log : console.popup)(totalTracks + ' items processed.\n' + totalItems + ' items tagged.\n' + failedItemsLen + ' items failed.' + (failedItemsLen ? '\n\nFailed items may be re-scanned in case the files were blocked. For more info, see this:\n https://github.com/regorxxx/Playlist-Tools-SMP/wiki/Known-problems-or-limitations#fingerprint-chromaprint-or-fooid-and-ebur-128-ffmpeg-tagging--fails-with-some-tracks' + '\n\nList of failed items:\n' + failedItems.join('\n') : ''), 'Fingerprint Tag');
 	if (bProfile) { profile.Print('Save fingerprints to files - completed in '); }
 	return bDone;
 };
@@ -375,7 +376,7 @@ chromaPrintUtils.reverseIndexingIter = async function reverseIndexingIter({
 		const toTags = bReadFiles
 			? await ffprobeUtils.getTags(new FbMetadbHandleList(toHandleListArr.slice(currOffset, currMax)), tagName)
 				.then((tags) => { return tags.map((obj) => [obj[tagName]]); })
-			: getHandleListTagsV2(new FbMetadbHandleList(toHandleListArr.slice(currOffset, currMax)), [tagName], {bMerged: true, splitBy: null});
+			: getHandleListTagsV2(new FbMetadbHandleList(toHandleListArr.slice(currOffset, currMax)), [tagName], { bMerged: true, splitBy: null });
 		this.reverseIndexing({ toTags, prevMap: reverseMap, currOffset, bFastMap, reverseIdxLen, tagLen, bProfile: false, bConsole: false });
 		const progress = Math.round(currMax / totalTracks * 10) * 10;
 		if (progress > prevProgress) { prevProgress = progress; console.log('Creating fingerprint database ' + progress + '%.'); }
