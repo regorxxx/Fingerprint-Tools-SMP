@@ -1,12 +1,14 @@
 ﻿'use strict';
-//17/03/25
+//01/08/25
 
 /* exported createFpMenuLeft */
 
 include('..\\..\\helpers\\helpers_xxx.js');
 /* global MF_STRING:readable, MF_GRAYED:readable, folders:readable,  */
+include('..\\..\\helpers\\buttons_xxx.js');
+/* global showButtonReadme:readable */
 include('..\\..\\helpers\\helpers_xxx_file.js');
-/* global _isFile:readable, WshShell:readable, popup:readable, _deleteFile:readable, _save:readable, _saveSplitJson:readable, _open:readable, utf8:readable, _jsonParseFile:readable , _jsonParseFileSplit:readable */
+/* global _isFile:readable, WshShell:readable, popup:readable, _deleteFile:readable, _save:readable, _saveSplitJson:readable, utf8:readable, _jsonParseFile:readable , _jsonParseFileSplit:readable */
 include('..\\..\\helpers\\helpers_xxx_prototypes.js');
 /* global round:readable, roughSizeOfObject:readable, SetReplacer:readable, _b:readable, _p:readable */
 include('..\\..\\helpers\\helpers_xxx_properties.js');
@@ -354,15 +356,8 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			});
 			menu.newCheckMenu(config, 'Create SMP dynamic menus', void (0), () => { return ppt.bDynamicMenus[1]; });
 			menu.newSeparator(config);
-			{	// Readme
-				menu.newEntry({
-					menuName: config, entryText: 'Readme...', func: () => {
-						const readmePath = folders.xxx + 'helpers\\readme\\fingerprint_tools.txt';
-						const readme = _open(readmePath, utf8);
-						if (readme.length) { fb.ShowPopupMessage(readme, 'Fingerprint Tools'); }
-					}
-				});
-			}
+			menu.newEntry({ menuName: config, entryText: 'Readme...', func: () => showButtonReadme('buttons_fingerprint_tools_menu.js') });
+
 		}
 	}
 	if (databaseHash !== -1) {
