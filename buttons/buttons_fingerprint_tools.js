@@ -1,5 +1,5 @@
 ﻿'use strict';
-//13/05/25
+//30/07/25
 
 /*
 	Fingerprint tag (Chromaprint)
@@ -27,7 +27,7 @@ include('helpers\\buttons_fingerprint_tools_menu.js');
 var prefix = 'fp'; // NOSONAR[global]
 var version = '1.5.0'; // NOSONAR[global]
 
-try { window.DefineScript('Fingerprint Tools', { author: 'regorxxx', version, features: { drag_n_drop: false } }); } catch (e) { /* May be loaded along other buttons */ } // eslint-disable-line no-unused-vars
+try { window.DefineScript('Fingerprint Tools button', { author: 'regorxxx', version, features: { drag_n_drop: false } }); } catch (e) { /* May be loaded along other buttons */ } // eslint-disable-line no-unused-vars
 
 var newButtonsProperties = { // NOSONAR[global]
 	fpTagC: ['Chromaprint Fingerprint tag', globTags.acoustidFP, { func: isString }, globTags.acoustidFP],
@@ -50,8 +50,8 @@ buttonsBar.list.push(newButtonsProperties);
 
 addButton({
 	'Fingerprint Tools': new ThemedButton({
-		coordinates: { x: 0, y: 0, w: _gr.CalcTextWidth('Fingerprint Tools', _gdiFont(globFonts.button.name, globFonts.button.size * buttonsBar.config.scale)) + 25 * _scale(1, false) / _scale(buttonsBar.config.scale), h: 22 },
-		text: 'Fingerprint Tools',
+		coordinates: { x: 0, y: 0, w: _gr.CalcTextWidth('Fingerprinting', _gdiFont(globFonts.button.name, globFonts.button.size * buttonsBar.config.scale)) + 25 * _scale(1, false) / _scale(buttonsBar.config.scale), h: 22 },
+		text: 'Fingerprinting',
 		func: function (mask) {
 			let bDone;
 			if (mask === MK_SHIFT) { // Enable/disable menus
@@ -76,7 +76,7 @@ addButton({
 			if (this.buttonsProperties.bDynamicMenus[1]) {
 				bindDynamicMenus({
 					menu: createFpMenuLeft.bind({ buttonsProperties: this.buttonsProperties, prefix: '' }),
-					parentName: 'Fingerprint Tools',
+					parentName: 'Fingerprinting',
 				});
 			}
 		},
