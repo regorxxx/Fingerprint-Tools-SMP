@@ -1,5 +1,5 @@
 ﻿'use strict';
-//10/01/24
+//06/08/25
 
 include('..\\..\\helpers\\helpers_xxx.js');
 /* global globTags:readable */
@@ -140,7 +140,7 @@ fooidUtils.calculateFingerprints = function calculateFingerprints({
 	if (!fromHandleList || !fromHandleList.Count) { return false; }
 	if (!utils.CheckComponent('foo_biometric', true)) { fb.ShowPopupMessage('foo_biometric component is not installed.', 'FooID Tag'); return; }
 	console.log(fromHandleList.Count, 'items processed.'); // DEBUG
-	const bSucess = fb.RunContextCommandWithMetadb('Save fingerprint to file(s)', fromHandleList, 8);
-	if (bSucess) { console.log(fromHandleList.Count, 'items tagged.'); }
-	return bSucess;
+	const bSuccess = fb.RunContextCommandWithMetadb('Save fingerprint to file(s)', fromHandleList, 8);
+	if (bSuccess) { console.log(fromHandleList.Count, 'items tagged.'); }
+	return bSuccess;
 };
