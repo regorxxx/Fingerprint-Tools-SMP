@@ -1,5 +1,5 @@
 ﻿'use strict';
-//05/07/25
+//09/08/25
 
 include('..\\..\\helpers\\helpers_xxx.js');
 /* global folders:readable, globTags:readable,  */
@@ -335,7 +335,9 @@ chromaPrintUtils.calculateFingerprints = function calculateFingerprints({
 		calcFp(count);
 	}
 	const failedItemsLen = failedItems.length;
-	(bQuiet ? console.log : console.popup)(totalTracks + ' items processed.\n' + totalItems + ' items tagged.\n' + failedItemsLen + ' items failed.' + (failedItemsLen ? '\n\nFailed items may be re-scanned in case the files were blocked. For more info, see this:\n https://github.com/regorxxx/Playlist-Tools-SMP/wiki/Known-problems-or-limitations#fingerprint-chromaprint-or-fooid-and-ebur-128-ffmpeg-tagging--fails-with-some-tracks' + '\n\nList of failed items:\n' + failedItems.join('\n') : ''), 'Fingerprint Tag');
+	const report = totalTracks + ' items processed.\n' + totalItems + ' items tagged.\n' + failedItemsLen + ' items failed.' + (failedItemsLen ? '\n\nFailed items may be re-scanned in case the files were blocked. For more info, see this:\n https://github.com/regorxxx/Playlist-Tools-SMP/wiki/Known-problems-or-limitations#fingerprint-chromaprint-or-fooid-and-ebur-128-ffmpeg-tagging--fails-with-some-tracks' + '\n\nList of failed items:\n' + failedItems.join('\n') : '');
+	if (bQuiet) { console.log('Fingerprint Tag:\n\t' + report.replace(/\n/g, '\n\t')); }
+	else { console.popup(report, 'Fingerprint Tag'); }
 	if (bProfile) { profile.Print('Save fingerprints to files - completed in '); }
 	return bDone;
 };
