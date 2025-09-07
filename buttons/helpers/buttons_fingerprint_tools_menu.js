@@ -1,5 +1,5 @@
 ﻿'use strict';
-//01/08/25
+//07/09/25
 
 /* exported createFpMenuLeft */
 
@@ -64,10 +64,10 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 	if (bChromaprint) {	// Execute comparison Chromaprint
 		menu.newEntry({
 			entryText: 'Compare selection by ChromaPrint' + (!bFlagsSel ? '\t(no selection)' : !bFlagsMaxSel ? '\t(selection > ' + maxSel + ')' : ''), func: () => {
-				this.switchAnimation('ChromaPrint comparison...', true);
+				this.switchAnimation('ChromaPrint comparison', true);
 				const bDone = chromaPrintUtils.compareFingerprints({ fromHandleList, toHandleList: fromHandleList, tagName: chromaTag, threshold: 0, bSendToPls: false, bPopup: true, bReadFiles: ppt.bReadFiles[1] });
 				this.selItems = null;
-				this.switchAnimation('ChromaPrint comparison...', false);
+				this.switchAnimation('ChromaPrint comparison', false);
 				return bDone;
 			}, flags: flagsChroma | flagsMaxSel | flagsMulSel, data: { bDynamicMenu: true }
 		});
@@ -75,10 +75,10 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 	if (bFooId) {	// Execute comparison FooID
 		menu.newEntry({
 			entryText: 'Compare selection by FooID' + (!bFlagsSel ? '\t(no selection)' : !bFlagsMaxSel ? '\t(selection > ' + maxSel + ')' : ''), func: () => {
-				this.switchAnimation('FooID comparison...', true);
+				this.switchAnimation('FooID comparison', true);
 				const bDone = fooidUtils.compareFingerprints({ fromHandleList, toHandleList: fromHandleList, tagName: fooidTag, threshold: 0, bSendToPls: false, bPopup: true });
 				this.selItems = null;
-				this.switchAnimation('FooID comparison...', false);
+				this.switchAnimation('FooID comparison', false);
 				return bDone;
 			}, flags: flagsChroma | flagsMaxSel | flagsMulSel, data: { bDynamicMenu: true }
 		});
@@ -89,10 +89,10 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 		if (!ppt.bReadFiles[1]) {
 			menu.newEntry({
 				entryText: 'Search by similar ChromaPrint' + (!bFlagsSel ? '\t(no selection)' : !bFlagsMaxSel ? '\t(selection > ' + maxSel + ')' : ''), func: () => {
-					this.switchAnimation('ChromaPrint search...', true);
+					this.switchAnimation('ChromaPrint search', true);
 					const bDone = chromaPrintUtils.compareFingerprints({ fromHandleList, toHandleList: fb.GetLibraryItems(), tagName: chromaTag, threshold: ppt.thresholdC[1], playlistName });
 					this.selItems = null;
-					this.switchAnimation('ChromaPrint search...', false);
+					this.switchAnimation('ChromaPrint search', false);
 					return bDone;
 				}, flags: flagsChroma | flagsMaxSel | (ppt.bReadFiles[1] ? MF_GRAYED : MF_STRING), data: { bDynamicMenu: true }
 			});
@@ -100,7 +100,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 		// Execute comparison ChromaPrint + database
 		menu.newEntry({
 			entryText: 'Search by similar ChromaPrint' + (ppt.bReadFiles[1] ? '' : ' (fast)') + (!bFlagsDb ? '\t(no database)' : (!bFlagsSel ? '\t(no selection)' : !bFlagsMaxSel ? '\t(selection > ' + maxSel + ')' : '')), func: () => {
-				this.switchAnimation('ChromaPrint search...', true);
+				this.switchAnimation('ChromaPrint search', true);
 				const bDone = chromaPrintUtils.compareFingerprintsFilter({
 					fromHandleList,
 					toHandleList: fb.GetLibraryItems(),
@@ -112,7 +112,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 					reverseDbIdxPath: databaseIdxPath
 				});
 				this.selItems = null;
-				this.switchAnimation('ChromaPrint search...', false);
+				this.switchAnimation('ChromaPrint search', false);
 				return bDone;
 			}, flags: flagsChroma | flagsDb | flagsMaxSel, data: { bDynamicMenu: true }
 		});
@@ -120,21 +120,21 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 	if (bFooId) {	// Execute comparison FooId
 		menu.newEntry({
 			entryText: 'Search by similar FooID' + (!bFlagsSel ? '\t(no selection)' : !bFlagsMaxSel ? '\t(selection > ' + maxSel + ')' : ''), func: () => {
-				this.switchAnimation('FooID search...', true);
+				this.switchAnimation('FooID search', true);
 				const bDone = fooidUtils.compareFingerprints({ fromHandleList, toHandleList: fb.GetLibraryItems(), tagName: fooidTag, threshold: ppt.thresholdF[1], playlistName });
 				this.selItems = null;
-				this.switchAnimation('FooID search...', false);
+				this.switchAnimation('FooID search', false);
 				return bDone;
 			}, flags: flagsMaxSel, data: { bDynamicMenu: true }
 		});
 	}
 	menu.newSeparator();
 	{
-		const menuName = menu.newMenu('Tagging...');
+		const menuName = menu.newMenu('Tagging');
 		{	// Tag ChromaPrint
 			menu.newEntry({
 				menuName, entryText: 'Tag with ChromaPrint' + (!bFlagsSel ? '\t(no selection)' : ''), func: () => {
-					this.switchAnimation('ChromaPrint tagging...', true);
+					this.switchAnimation('ChromaPrint tagging', true);
 					// Rough estimation of processing time based on total duration... bitrate? Sample rate?
 					const t = fromHandleList.CalcTotalDuration() / 3600 * 0.0029, h = Math.floor(t), m = Math.round((t - h) * 60);
 					const tText = ((h ? h + ' h' : '') + (h && m ? ' ' : '') + (m ? m + ' min' : '')) || '< 1 min';
@@ -146,7 +146,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 					this.selItems = null;
 					// Change hash to force database reloading on next call
 					if (databaseHash !== -1 && fromHandleList.Convert().some((handle) => { return fb.IsMetadbInMediaLibrary(handle); })) { ppt.databaseHash[1] += 1; overwriteProperties(ppt); }
-					this.switchAnimation('ChromaPrint tagging...', false);
+					this.switchAnimation('ChromaPrint tagging', false);
 					return bDone;
 				}, flags: flagsSel, data: { bDynamicMenu: true }
 			});
@@ -154,12 +154,12 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 		{	// Tag FooId
 			menu.newEntry({
 				menuName, entryText: 'Tag with FooID' + (!bFlagsFooid ? '\t(not installed)' : (!bFlagsSel ? '\t(no selection)' : '')), func: () => {
-					this.switchAnimation('FooID tagging...', true);
+					this.switchAnimation('FooID tagging', true);
 					// Tag
 					if (bFlagsFooid) { fb.ShowConsole(); }
 					const bDone = fooidUtils.calculateFingerprints({ fromHandleList });
 					this.selItems = null;
-					this.switchAnimation('FooID tagging...', false);
+					this.switchAnimation('FooID tagging', false);
 					return bDone;
 				}, flags: flagsSel | flagsFooid, data: { bDynamicMenu: true }
 			});
@@ -168,15 +168,15 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 		{	// ChromaPrint database
 			menu.newEntry({
 				menuName, entryText: (databaseHash !== -1 ? '(Re)c' : 'C') + 'reate ChromaPrint database...', func: async (bOmmit = false) => {
-					this.switchAnimation('ChromaPrint database...', true);
+					this.switchAnimation('ChromaPrint database', true);
 					const toHandleList = fb.GetLibraryItems();
 					const newhash = chromaprintDatabaseHash(toHandleList);
 					if (!bOmmit) {
 						const answer = WshShell.Popup('Scan entire library for "' + chromaTag + '" tags and create a reverse indexed database for faster mathing?.\nNote library must be tagged with ChromaPrint first.\nRecreating the database is needed after adding or removing items (only updating the new additions/removals).', 0, 'Fingerprint Tools', popup.question + popup.yes_no);
-						if (answer === popup.no) { this.switchAnimation('ChromaPrint database...', false); return; }
+						if (answer === popup.no) { this.switchAnimation('ChromaPrint database', false); return; }
 						if (newhash === databaseHash) {
 							const answer = WshShell.Popup('Previous database has same hash than new one, this may happen if no items have been added/removed (duration and total count remains the same) but fingerprint tags have been changed.\nRecreate it anyway? (will require reading tags from all tracks again)', 0, 'Fingerprint Tools', popup.question + popup.yes_no);
-							if (answer === popup.no) { this.switchAnimation('ChromaPrint database...', false); return; }
+							if (answer === popup.no) { this.switchAnimation('ChromaPrint database', false); return; }
 						}
 					}
 					// Delete all previous files
@@ -262,16 +262,16 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 					}
 					ppt.databaseHash[1] = newhash;
 					overwriteProperties(ppt);
-					this.switchAnimation('ChromaPrint database...', false);
+					this.switchAnimation('ChromaPrint database', false);
 				}, flags: flagsChroma
 			});
 		}
 	}
 	menu.newSeparator();
 	{
-		const config = menu.newMenu('Configuration...');
+		const config = menu.newMenu('Configuration');
 		{
-			const menuName = menu.newMenu('ChromaPrint...', config);
+			const menuName = menu.newMenu('ChromaPrint', config);
 			// Enable ChromaPrint
 			menu.newEntry({
 				menuName, entryText: 'Enable ChromaPrint tools', func: (bOmmit = false) => {
@@ -307,7 +307,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			});
 		}
 		{
-			const menuName = menu.newMenu('FooId...', config);
+			const menuName = menu.newMenu('FooId', config);
 			// Enable ChromaPrint
 			menu.newEntry({
 				menuName, entryText: 'Enable FooId tools', func: () => {
@@ -356,7 +356,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			});
 			menu.newCheckMenu(config, 'Create SMP dynamic menus', void (0), () => { return ppt.bDynamicMenus[1]; });
 			menu.newSeparator(config);
-			menu.newEntry({ menuName: config, entryText: 'Readme...', func: () => showButtonReadme('buttons_fingerprint_tools_menu.js') });
+			menu.newEntry({ menuName: config, entryText: 'Readme...', func: () => showButtonReadme('buttons_fingerprint_tools.js') });
 
 		}
 	}
@@ -373,7 +373,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			bRecreate = WshShell.Popup('Previous ChromaPrint database may not be up to date.\nRecreate it?', 0, 'Fingerprint Tools', popup.question + popup.yes_no);
 		}
 		// Call the entry to recreate it directly without any more questions and continue with the menu
-		if (bRecreate === popup.yes) { menu.btn_up(void (0), void (0), void (0), 'Tagging...\\(Re)create ChromaPrint database...', void (0), void (0), void (0), { pos: 0, args: true }); }
+		if (bRecreate === popup.yes) { menu.btn_up(void (0), void (0), void (0), 'Tagging\\(Re)create ChromaPrint database...', void (0), void (0), void (0), { pos: 0, args: true }); }
 	}
 	return menu;
 }
