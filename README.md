@@ -28,15 +28,15 @@
 
 ![fp_2](https://github.com/regorxxx/Fingerprint-Tools-SMP/assets/83307074/5403ac83-50b5-459a-9d96-c568e9f42c26)
 
-## Requirements
- 1. [Spider Monkey Panel](https://theqwertiest.github.io/foo_spider_monkey_panel): Component required to install this javaScript addon. Only x32.
- 2. [JSplitter](https://foobar2000.ru/forum/viewtopic.php?t=6378): Component required to install this javaScript addon. Both x32 and x64.
+## Requirements (only one host component required)
+ 1. [Spider Monkey Panel](https://theqwertiest.github.io/foo_spider_monkey_panel): JavaScript host component required to install this. Only x32. **(host component)**
+ 2. [JSplitter](https://foobar2000.ru/forum/viewtopic.php?t=6378): JavaScript host component required to install this. Both x32 and x64. **(host component)**
  3. FontAwesome: found at ’.\ resources\fontawesome-webfont.ttf’. See installation notes.
- 4. ChromaPrint: 
+ 4. ChromaPrint: pre-installed along the script.
  5. FooID: found at ’.\ resources\FooID\’ folder. See 'install.txt' there.
 
 ## Installation
-See [_INSTALLATION (txt)](https://github.com/regorxxx/Fingerprint-Tools-SMP/blob/main/_INSTALLATION.txt) and the [Wiki](https://github.com/regorxxx/Fingerprint-Tools-SMP/wiki/Installation).
+See [Wiki](https://github.com/regorxxx/Fingerprint-Tools-SMP/wiki/Installation) or the [_INSTALLATION (txt)](https://github.com/regorxxx/Fingerprint-Tools-SMP/blob/main/_INSTALLATION.txt).
 Not properly following the installation instructions will result in scripts not working as intended. Please don't report errors before checking this.
 
 ## Support
