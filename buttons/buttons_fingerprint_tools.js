@@ -8,7 +8,7 @@
  */
 
 include('..\\helpers\\helpers_xxx.js');
-/* global globFonts:readable, MK_SHIFT:readable, globTags:readable , MK_CONTROL:readable */
+/* global globFonts:readable, globTags:readable */
 include('..\\helpers\\buttons_xxx.js');
 /* global buttonsBar:readable, addButton:readable, ThemedButton:readable */
 include('..\\helpers\\helpers_xxx_prototypes.js');
@@ -52,16 +52,8 @@ addButton({
 	'Fingerprint Tools': new ThemedButton({
 		coordinates: { x: 0, y: 0, w: _gr.CalcTextWidth('Fingerprinting', _gdiFont(globFonts.button.name, globFonts.button.size * buttonsBar.config.scale)) + 25 * _scale(1, false) / _scale(buttonsBar.config.scale), h: 22 },
 		text: 'Fingerprinting',
-		func: function (mask) {
-			let bDone;
-			if (mask === MK_SHIFT) { // Enable/disable menus
-				// menuAlt.btn_up(this.currX, this.currY + this.currH);
-			} else if (mask === MK_CONTROL) { // Simulate menus to get names
-				// menu.btn_up(this.currX, this.currY + this.currH, void(0), void(0), false, _setClipboardData);
-			} else { // Standard use
-				bDone = createFpMenuLeft.bind(this)().btn_up(this.currX, this.currY + this.currH);
-			}
-			return bDone;
+		func: function (mask) { // eslint-disable-line no-unused-vars
+			return createFpMenuLeft.bind(this)().btn_up(this.currX, this.currY + this.currH);
 		},
 		description: function () {
 			this.selItems = plman.GetPlaylistSelectedItems(plman.ActivePlaylist);
