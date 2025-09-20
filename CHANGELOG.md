@@ -2,6 +2,7 @@
 
 ## [Table of Contents]
 - [Unreleased](#unreleased)
+- [2.0.0](#200---2025-09-20)
 - [1.4.0](#140---2024-10-09)
 - [1.3.1](#131---2024-08-13)
 - [1.3.0](#130---2024-07-30)
@@ -10,6 +11,12 @@
 - [1.0.0](#100---2024-02-29)
 
 ## [Unreleased][]
+### Added
+### Changed
+### Removed
+### Fixed
+
+## [2.0.0] - 2025-09-20
 ### Added
 - UI: toolbar tooltip now shows 'Shift + Win + R. Click' shortcut to open SMP/JSpliter panel menu (which works globally on any script and panel, at any position).
 - UI: exposed color settings via window.NotifyOthers() method for themes/multi-panel support. You may pass a color scheme -size 6 recommended- (output from GetColourScheme()) at 'Colors: set color scheme' (applies to all compatible panels) or 'Toolbar: set color scheme' (applies only to this script), which will set appropriate colors following panel's color logic; alternatively you may set direct color settings at 'Toolbar: set colors' which needs an array of 5 colors or an object {toolbar, text, button, hover, active}. Panel has also independent settings to listen to colors from other panels (but not for sending colors as a color-server to others). See [this](https://github.com/regorxxx/Not-A-Waveform-Seekbar-SMP/issues/4) and [this](https://hydrogenaudio.org/index.php/topic,120980.msg1069107.html#msg1069107).
@@ -82,7 +89,8 @@
 ### Removed
 ### Fixed
 
-[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.4.0...v2.0.0
 [1.4.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.1...v1.4.0
 [1.3.1]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.3.0...v1.3.1
 [1.3.0]: https://github.com/regorxxx/Fingerprint-Tools-SMP/compare/v1.2.0...v1.3.0
