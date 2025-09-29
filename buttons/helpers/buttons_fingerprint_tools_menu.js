@@ -1,5 +1,5 @@
 ﻿'use strict';
-//25/09/25
+//29/09/25
 
 /* exported createFpMenuLeft */
 
@@ -356,7 +356,7 @@ function createFpMenuLeft({ bSimulate = false } = {}) {
 			});
 			menu.newCheckMenu(config, 'Create SMP dynamic menus', void (0), () => { return ppt.bDynamicMenus[1]; });
 			menu.newSeparator(config);
-			menu.newEntry({ menuName: config, entryText: 'Readme...', func: () => showButtonReadme('buttons_fingerprint_tools.js') });
+			menu.newEntry({ menuName: config, entryText: 'Open readme...', func: () => showButtonReadme('buttons_fingerprint_tools.js') });
 
 		}
 	}
