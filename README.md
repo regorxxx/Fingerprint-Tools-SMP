@@ -1,4 +1,8 @@
-# Fingerprint-Tools-SMP
+<h1 align="center">Fingerprint-Tools-SMP</h1>
+
+<h2 align="center">This script is now deprecated and integrated into <a href="https://github.com/regorxxx/Infinity-Tools-SMP">Infinity-Tools-SMP.</a>
+<br><ins>No further support or releases will be provided.</ins></h2>
+
 [![version][version_badge]][changelog]
 [![CodeFactor][codefactor_badge]](https://www.codefactor.io/repository/github/regorxxx/Fingerprint-Tools-SMP/overview/main)
 [![CodacyBadge][codacy_badge]](https://www.codacy.com/gh/regorxxx/Fingerprint-Tools-SMP/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=regorxxx/Fingerprint-Tools-SMP&amp;utm_campaign=Badge_Grade)
